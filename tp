@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+string arco(int x, int y) {
+    if (x > 0 && x < 732 && y > 0 && y < 232) {
+        return "GOL";
+    }
+    else if ((x == 0 || x == 732) && y > 0 && y <= 232 || (y == 232 && x > 0 && x < 732)) {
+        return "PALO";
+    }
+    else {
+        return "AFUERA";
+    }
+}
+
+int main() {
+    int n;
+    cout << "Cantidad de tiros a evaluar: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        int x, y;
+
+       
+        while (true) {
+            cout << "Ingrese x e y separados por espacio (Tiro #" << i + 1 << "): ";
+            cin >> x >> y;
+
+            if (x >= -1000 && x <= 1000 && y >= 1 && y <= 1000) {
+                break;
+            }
+            else {
+                cout << "La posicion esta incorrecta, vuelve a ponerla." << endl;
+            }
+        }
+
+        cout << "Resultado del tiro #" << i + 1 << ": " << arco(x, y) << endl;
+    }
+
+    return 0;
+}
